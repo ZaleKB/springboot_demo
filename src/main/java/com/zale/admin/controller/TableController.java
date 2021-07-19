@@ -2,17 +2,22 @@ package com.zale.admin.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zale.admin.bean.User;
+import com.zale.admin.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
 public class TableController {
 
 
-
+    @Autowired
+    UserService userService;
 
     /**
      *
@@ -22,7 +27,7 @@ public class TableController {
     @GetMapping("/basic_table")
     public String basic_table(@RequestParam("a") int a){
 
-        int i = 10/0;
+        int i = 10/0;      //测试错误页面
         return "table/basic_table";
     }
 
@@ -65,5 +70,17 @@ public class TableController {
         model.addAttribute("users",userPage);
 
         return "table/dynamic_table";
+    }
+
+    @GetMapping("/user/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id,
+                             @RequestParam(value = "pn",defaultValue = "1")Integer pn,
+                             RedirectAttributes ra){
+
+        userService.removeById(id);
+
+        //重定向自带参数
+        ra.addAttribute("pn",pn);
+        return "redirect:/dynamic_table";
     }
 }

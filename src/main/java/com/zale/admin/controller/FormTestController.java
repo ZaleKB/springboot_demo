@@ -40,6 +40,7 @@ public class FormTestController {
                 email,username,headerImg.getSize(),photos.length);
 
         if (!headerImg.isEmpty()) {
+            //保存到文件服务器，OSS服务器
             String originalFilename = headerImg.getOriginalFilename();
             headerImg.transferTo(new File("F:\\" + originalFilename));
         }
