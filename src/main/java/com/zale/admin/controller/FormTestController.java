@@ -21,6 +21,14 @@ public class FormTestController {
         return "form/form_layouts";
     }
 
+    /**
+     * MultipartFile 自动封装上传过来的文件
+     * @param email
+     * @param username
+     * @param headerImg
+     * @param photos
+     * @return
+     */
     @PostMapping("/upload")
     public String upload(@RequestParam("email") String email,
                          @RequestParam("username") String username,

@@ -60,16 +60,16 @@ public class IndexController {
     public String mainPage(HttpSession session, Model model) {
 
         log.info("当前方法是：{}","mainPage");
-        // Object loginUser = session.getAttribute("loginUser");
-        // if(loginUser != null) {
-        //     return "main";
-        // }
-        // else {
-        //     model.addAttribute("msg", "re-login");
-        //     return "login";
-        // }
+        Object loginUser = session.getAttribute("loginUser");
+        if(loginUser != null) {
+            return "main";
+        }
+        else {
+            model.addAttribute("msg", "re-login");
+            return "login";
+        }
 
-        return "main";
+       // return "main";
     }
 
 }

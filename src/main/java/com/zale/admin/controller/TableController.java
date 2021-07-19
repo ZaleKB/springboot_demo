@@ -1,5 +1,6 @@
 package com.zale.admin.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zale.admin.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

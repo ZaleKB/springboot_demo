@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Order(value= Ordered.HIGHEST_PRECEDENCE)  //优先级，数字越小优先级越高
+@Order(value= Ordered.HIGHEST_PRECEDENCE)  //优先级，数字越小优先级越高 覆盖默认异常解析
 @Component
 public class CustomerHandlerExceptionResolver implements HandlerExceptionResolver {
     @Override
@@ -19,7 +19,7 @@ public class CustomerHandlerExceptionResolver implements HandlerExceptionResolve
                                          Object handler, Exception ex) {
 
         try {
-            response.sendError(511,"Error I'd like.");
+            response.sendError(511,"Error I fond.");
         } catch (IOException e) {
             e.printStackTrace();
         }
